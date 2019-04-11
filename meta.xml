@@ -1,0 +1,4 @@
+﻿<meta>
+  <info name="Texas Life Engine" author="Sergio Masellis" type="script"/>
+  <script src="compiled/netcoreapp2.2/TexasLife.dll" />
+</meta>

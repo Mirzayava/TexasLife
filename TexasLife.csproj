@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>compiled\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="BCrypt-Core">
+      <HintPath>..\..\runtime\BCrypt-Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Bootstrapper">
+      <HintPath>..\..\runtime\Bootstrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="LiteDB">
+      <HintPath>..\..\runtime\LiteDB.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
