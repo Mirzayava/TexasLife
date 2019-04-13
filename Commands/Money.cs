@@ -4,6 +4,7 @@ using System.Text;
 using GTANetworkAPI;
 using TexasLife.Database;
 using TexasLife.Player;
+using TexasLife.Events;
 
 namespace TexasLife.Commands
 {
@@ -21,6 +22,7 @@ namespace TexasLife.Commands
             }
 
             client.SendChatMessage($"Your Balance is: ${playerStats.money}");
+            UpdateMoneyEvent.Update_Money(client);
         }
 
         [Command("givemoney")]
@@ -63,6 +65,15 @@ namespace TexasLife.Commands
             TLDatabase.Update(receivingPlayerStats);
 
             client.SendChatMessage($"You sent ${amount} to {recevingPlayerInfo.username}");
+
+            UpdateMoneyEvent.Update_Money(client);
+
+            Client receivingPlayerClient = TLPlayerHelper.GetPlayerFromName(username);
+
+            if (receivingPlayerClient == null)
+                return;
+
+            UpdateMoneyEvent.Update_Money(receivingPlayerClient);
         }
 
         [Command("burnmoney")]
@@ -82,6 +93,7 @@ namespace TexasLife.Commands
                 client.SendChatMessage($"~r~Something went wrong.");
             }
 
+            UpdateMoneyEvent.Update_Money(client);
         }
 
         [Command("updatebalance")]
@@ -100,6 +112,8 @@ namespace TexasLife.Commands
             } else {
                 client.SendChatMessage($"~r~Something went wrong.");
             }
+
+            UpdateMoneyEvent.Update_Money(client);
         }
     }
 }

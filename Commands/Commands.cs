@@ -4,7 +4,7 @@ using GTANetworkAPI;
 
 namespace TexasLife.Commands
 {
-    class TLCommands {
+    class TLCommands : Script {
 
         [Command("cv")]
         public void CMD_CreateVehicle(Client client, string vehicle_name)

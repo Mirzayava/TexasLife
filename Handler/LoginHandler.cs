@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using GTANetworkAPI;
 using TexasLife.Database;
+using TexasLife.Events;
 using TexasLife.Player;
 
 namespace TexasLife.Handler
@@ -23,6 +24,12 @@ namespace TexasLife.Handler
             }
 
             client.Position = playerStats.GetLastPosition();
+
+            NAPI.Entity.SetEntityTransparency(client, 255);
+            NAPI.Entity.SetEntityInvincible(client, false);
+            NAPI.ClientEvent.TriggerClientEvent(client, "playerLoggedIn");
+
+            UpdateMoneyEvent.Update_Money(client);
         }
     }
 }
