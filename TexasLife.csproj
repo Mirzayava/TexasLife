@@ -15,8 +15,17 @@
     <Reference Include="Bootstrapper">
       <HintPath>..\..\runtime\Bootstrapper.dll</HintPath>
     </Reference>
-    <Reference Include="LiteDB">
-      <HintPath>..\..\runtime\LiteDB.dll</HintPath>
+    <Reference Include="MongoDB.Bson">
+      <HintPath>..\..\runtime\MongoDB.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver">
+      <HintPath>..\..\runtime\MongoDB.Driver.dll</HintPath>
+    </Reference>
+    <Reference Include="MongoDB.Driver.Core">
+      <HintPath>..\..\runtime\MongoDB.Driver.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="YamlDotNet">
+      <HintPath>..\..\runtime\YamlDotNet.dll</HintPath>
     </Reference>
   </ItemGroup>
 

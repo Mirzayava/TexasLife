@@ -2,14 +2,20 @@
 using System.Collections.Generic;
 using System.Text;
 using GTANetworkAPI;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace TexasLife.Player
 {
     public class TLPlayerStats
     {
-        public int _id { get; set; }
+        [BsonId]
+        public ObjectId Id { get; set; }
+
+        [BsonElement("last_location")]
         public double[] last_location { get; set; } = new double[] { 316.44, -233.94, 53.96 };
 
+        [BsonElement("money")]
         public double money { get; set; } = 0;
 
         public Vector3 GetLastPosition()

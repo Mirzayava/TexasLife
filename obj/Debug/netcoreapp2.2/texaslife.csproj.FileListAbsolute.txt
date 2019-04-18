@@ -29,6 +29,9 @@ C:\RAGEMP\server-files\bridge\resources\texaslife\obj\Debug\netcoreapp2.2\texasl
 C:\RAGEMP\server-files\bridge\resources\texaslife\obj\Debug\netcoreapp2.2\texaslife.csproj.CopyComplete
 C:\RAGEMP\server-files\bridge\resources\texaslife\obj\Debug\netcoreapp2.2\texaslife.dll
 C:\RAGEMP\server-files\bridge\resources\texaslife\obj\Debug\netcoreapp2.2\texaslife.pdb
-C:\RAGEMP\server-files\bridge\resources\texaslife\compiled\netcoreapp2.2\LiteDB.dll
 C:\RAGEMP\server-files\bridge\resources\texaslife\compiled\netcoreapp2.2\BCrypt-Core.dll
 C:\RAGEMP\server-files\bridge\resources\texaslife\obj\Debug\netcoreapp2.2\TexasLife.csprojAssemblyReference.cache
+C:\RAGEMP\server-files\bridge\resources\texaslife\compiled\netcoreapp2.2\MongoDB.Driver.dll
+C:\RAGEMP\server-files\bridge\resources\texaslife\compiled\netcoreapp2.2\MongoDB.Bson.dll
+C:\RAGEMP\server-files\bridge\resources\texaslife\compiled\netcoreapp2.2\MongoDB.Driver.Core.dll
+C:\RAGEMP\server-files\bridge\resources\texaslife\compiled\netcoreapp2.2\YamlDotNet.dll

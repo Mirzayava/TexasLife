@@ -6,40 +6,40 @@ namespace TexasLife.Commands
 {
     class TLCommands : Script {
 
-        [Command("cv")]
-        public void CMD_CreateVehicle(Client client, string vehicle_name)
-        {
-            if (!client.HasData("VehicleSpawn")) return;
-            if (!client.GetData("VehicleSpawn")) return;
+        //[Command("cv")]
+        //public void CMD_CreateVehicle(Client client, string vehicle_name)
+        //{
+        //    if (!client.HasData("VehicleSpawn")) return;
+        //    if (!client.GetData("VehicleSpawn")) return;
 
-            if (client.HasData("OwnedVehicle"))
-            {
-                TLVehicle previous_vehicle = client.GetData("OwnedVehicle");
-                previous_vehicle.Delete();
-            }
-            TLVehicle customVehicle = new TLVehicle(client, vehicle_name);
-        }
+        //    if (client.HasData("OwnedVehicle"))
+        //    {
+        //        TLVehicle previous_vehicle = client.GetData("OwnedVehicle");
+        //        previous_vehicle.Delete();
+        //    }
+        //    TLVehicle customVehicle = new TLVehicle(client, vehicle_name);
+        //}
 
-        [Command("cm")]
-        public void CMD_CreateMoneyBag(Client sender)
-        {
-            Vector3 pos = NAPI.Entity.GetEntityPosition(sender);
-            uint playerDimension = NAPI.Entity.GetEntityDimension(sender);
+        //[Command("cm")]
+        //public void CMD_CreateMoneyBag(Client sender)
+        //{
+        //    Vector3 pos = NAPI.Entity.GetEntityPosition(sender);
+        //    uint playerDimension = NAPI.Entity.GetEntityDimension(sender);
 
-            NAPI.Object.CreateObject(NAPI.Util.GetHashKey("prop_money_bag_01"), pos - new Vector3(0, 0, 1f), new Vector3(), 255, playerDimension);
-            NAPI.ColShape.CreateSphereColShape(pos, 10);
-        }
+        //    NAPI.Object.CreateObject(NAPI.Util.GetHashKey("prop_money_bag_01"), pos - new Vector3(0, 0, 1f), new Vector3(), 255, playerDimension);
+        //    NAPI.ColShape.CreateSphereColShape(pos, 10);
+        //}
 
-        [Command("rv")]
-        public void CMD_RepairVehicle(Client client)
-        {
-            Vehicle veh = client.Vehicle;
-            veh.Repair();
-        }
+        //[Command("rv")]
+        //public void CMD_RepairVehicle(Client client)
+        //{
+        //    Vehicle veh = client.Vehicle;
+        //    veh.Repair();
+        //}
 
-        [Command("lv")]
-        public void CMD_LockVehicle(Client client)
-        {
+        //[Command("lv")]
+        //public void CMD_LockVehicle(Client client)
+        //{
             /*
             bool was_vehicle_found = false;
 
@@ -76,14 +76,14 @@ namespace TexasLife.Commands
 
             //personal_vehicle.Locked = !personal_vehicle.Locked;
             //client.SendChatMessage($"Your Vehicle lock is currently set to {personal_vehicle.Locked}");
-        }
+        //}
 
-        [Command("spawn")]
-        public void CMD_SpawnPoint(Client client)
-        {
-            TLColShape tlColShape = new TLColShape(client, "Vehicle Creation Zone");
-            tlColShape.ColShape.SetData("VehicleSpawn", tlColShape);
-        }
+        //[Command("spawn")]
+        //public void CMD_SpawnPoint(Client client)
+        //{
+        //    TLColShape tlColShape = new TLColShape(client, "Vehicle Creation Zone");
+        //    tlColShape.ColShape.SetData("VehicleSpawn", tlColShape);
+        //}
 
         //[Command("cv")]
         //public void CMD_CreateVehicle(Client client, string vehicle_name)

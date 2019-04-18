@@ -10,6 +10,8 @@ namespace TexasLife.Commands
 {
     public class TLMoney : Script
     {
+        TLMongoDatabase db = new TLMongoDatabase();
+
         [Command("getbalance")]
         public void CMD_GetBalance(Client client)
         {
@@ -36,7 +38,7 @@ namespace TexasLife.Commands
             }
 
             TLPlayerStats sendingPlayerStats = TLPlayerHelper.GetPlayerStats(client);
-            TLPlayer recevingPlayerInfo = TLDatabase.GetDataByField<TLPlayer>("username", username);
+            TLPlayer recevingPlayerInfo = db.GetSingle<TLPlayer>("username", username).Result;
 
             if(recevingPlayerInfo == null)
             {
@@ -44,11 +46,11 @@ namespace TexasLife.Commands
                 return;
             }
 
-            TLPlayerStats receivingPlayerStats = TLDatabase.GetByID<TLPlayerStats>(recevingPlayerInfo._id);
+            TLPlayerStats receivingPlayerStats = db.GetSingle<TLPlayerStats>("username", recevingPlayerInfo.Username).Result;
 
             if(receivingPlayerStats == null)
             {
-                Console.WriteLine($"{recevingPlayerInfo.username} does not have TLPlayerStats table.");
+                Console.WriteLine($"{recevingPlayerInfo.Username} does not have TLPlayerStats table.");
                 return;
             }
 
@@ -61,14 +63,14 @@ namespace TexasLife.Commands
             }
             receivingPlayerStats.AddMoney(amount);
 
-            TLDatabase.Update(sendingPlayerStats);
-            TLDatabase.Update(receivingPlayerStats);
+            db.Update<TLPlayerStats>(sendingPlayerStats.Id, "money", sendingPlayerStats.money.ToString());
+            db.Update<TLPlayerStats>(receivingPlayerStats.Id, "money", receivingPlayerStats.money.ToString());
 
-            client.SendChatMessage($"You sent ${amount} to {recevingPlayerInfo.username}");
+            client.SendChatMessage($"You sent ${amount} to {recevingPlayerInfo.Username}");
 
             UpdateMoneyEvent.Update_Money(client);
 
-            Client receivingPlayerClient = TLPlayerHelper.GetPlayerFromName(username);
+            Client receivingPlayerClient = NAPI.Player.GetPlayerFromName(username);
 
             if (receivingPlayerClient == null)
                 return;
@@ -85,7 +87,7 @@ namespace TexasLife.Commands
                 return;
 
             bool result = playerStats.SubMoney(amount);
-            TLDatabase.Update(playerStats);
+            db.Update<TLPlayerStats>(playerStats.Id, "money", playerStats.money.ToString());
 
             if (result) {
                 client.SendChatMessage($"~y~You burnt ${amount}");
@@ -105,9 +107,9 @@ namespace TexasLife.Commands
                 return;
 
             bool result = playerStats.AddMoney(amount);
-            TLDatabase.Update(playerStats);
+            db.Update<TLPlayerStats>(playerStats.Id, "money", amount.ToString());
 
-            if(result) {
+            if (result) {
                 client.SendChatMessage($"~g~You recieved ${amount}");
             } else {
                 client.SendChatMessage($"~r~Something went wrong.");
