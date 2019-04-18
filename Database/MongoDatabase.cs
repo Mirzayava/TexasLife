@@ -19,7 +19,7 @@ namespace TexasLife.Database
                 collection.InsertOne(data);
         }
 
-        public async void Update<T>(ObjectId id, string updateFieldName, string updateFieldValue)
+        public async void Update<T>(ObjectId id, string updateFieldName, dynamic updateFieldValue)
         // USEAGE:  db.Update<User>("5cb3463b1d190531ec8d8693", "Email", "abc@123.com");
         {
             try

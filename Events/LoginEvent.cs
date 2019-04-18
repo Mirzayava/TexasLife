@@ -19,14 +19,18 @@ namespace TexasLife.Events
             string username = (string)arguments[0];
             string password = (string)arguments[1];
 
-            TLPlayer playerLookup = db.GetList<TLPlayer>("username", username).Result[0];
+            TLPlayer playerLookup;
 
-            if (playerLookup == null)
+            var query = db.GetList<TLPlayer>("username", username).Result;
+
+            if (query.Count == 0 || query == null)
             {
                 client.SendChatMessage("~r~Data was not found");
                 client.TriggerEvent("LoginResult", 0);
                 return;
             }
+
+            playerLookup = query[0];
 
             if (!playerLookup.CheckPassword(password))
             {

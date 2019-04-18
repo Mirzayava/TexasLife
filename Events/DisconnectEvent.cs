@@ -18,7 +18,7 @@ namespace TexasLife.Events
 
             playerStats.last_location = new double[] { client.Position.X, client.Position.Y, client.Position.Z };
 
-            db.Update<TLPlayerStats>(playerStats.Id, "last_location", playerStats.last_location.ToString());
+            db.Update<TLPlayerStats>(playerStats.Id, "last_location", playerStats.last_location);
         }
     }
 }
