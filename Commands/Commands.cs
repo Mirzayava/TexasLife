@@ -20,6 +20,12 @@ namespace TexasLife.Commands
         //    TLVehicle customVehicle = new TLVehicle(client, vehicle_name);
         //}
 
+        [Command("gl")]
+        public void CMD_GetLocation(Client client)
+        {
+            client.SendChatMessage($"X: {client.Position.X}, Y:{client.Position.Y}, Z:{client.Position.Z}");
+        }
+
         //[Command("cm")]
         //public void CMD_CreateMoneyBag(Client sender)
         //{

@@ -13,7 +13,13 @@ namespace TexasLife.Player
         public ObjectId Id { get; set; }
 
         [BsonElement("last_location")]
-        public double[] last_location { get; set; } = new double[] { 316.44, -233.94, 53.96 };
+        public double[] last_location { get; set; } = new double[] { -831.945, -102.6592, 28.18537 };
+
+        private static double[] revive_location { get; set; } = new double[] { -831.945, -102.6592, 28.18537 };
+
+        // Airport Terminal 1 -1014.881,-2470.308, 13.87139 
+        // In front of appartments 316.44, -233.94, 53.96
+        // Subway -831.945, -102.6592, 28.18537
 
         [BsonElement("money")]
         public double money { get; set; } = 0;
@@ -21,6 +27,11 @@ namespace TexasLife.Player
         public Vector3 GetLastPosition()
         {
             return new Vector3(last_location[0], last_location[1], last_location[2]);
+        }
+
+        public static Vector3 GetRevivePosition()
+        {
+            return new Vector3(revive_location[0], revive_location[1], revive_location[2]);
         }
 
         public bool AddMoney(double money_to_add)

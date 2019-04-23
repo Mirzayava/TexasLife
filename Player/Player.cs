@@ -22,6 +22,9 @@ namespace TexasLife.Player
         [BsonElement("client")]
         public string Client { get; set; }
 
+        [BsonElement("FirstTimeLogin")]
+        public bool FirstTimeLogin { get; set; }
+
 
 
 
@@ -36,6 +39,7 @@ namespace TexasLife.Player
             this.Username = username;
             this.Password = BCryptHelper.HashPassword(password, BCryptHelper.GenerateSalt());
             this.Client = client;
+            this.FirstTimeLogin = false;
         }
 
         public bool CheckPassword(string input)

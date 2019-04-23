@@ -40,6 +40,7 @@ namespace TexasLife.Handler
             NAPI.Entity.SetEntityInvincible(client, false);
             NAPI.ClientEvent.TriggerClientEvent(client, "playerLoggedIn");
             NAPI.ClientEvent.TriggerClientEvent(client, "LoginResult", 1);
+            NAPI.ClientEvent.TriggerClientEvent(client, "moveSkyCamera", client, "down", 1, true);
 
             UpdateMoneyEvent.Update_Money(client);
         }
