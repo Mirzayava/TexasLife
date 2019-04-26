@@ -3,9 +3,9 @@
 using GTANetworkAPI;
 
 // Texas Life NS
-using TexasLife.Player;
-using TexasLife.Settings;
-using TexasLife.Database;
+// using TexasLife.Player;
+// using TexasLife.Settings;
+// using TexasLife.Database;
 
 
 
@@ -13,10 +13,10 @@ namespace TexasLife.Commands
 {
     public class TLRegistration : Script
     {
-        TLSettings LoadedSettings { get; set; }
-        TLMongoDatabase db = new TLMongoDatabase();
+        // TLSettings LoadedSettings { get; set; }
+        // TLMongoDatabase db = new TLMongoDatabase();
 
-        public TLRegistration() {
+        // public TLRegistration() {
 
             //using (var db = new LiteDatabase(@"./Database.db"))
             //{
@@ -24,7 +24,7 @@ namespace TexasLife.Commands
 
             //    if (settings.Count() == 0)
             //    {
-            //        TLSettings serverSettings = new TLSettings();
+                //    TLSettings serverSettings = new TLSettings();
             //        settings.Upsert(serverSettings);
             //    }
 
@@ -36,29 +36,29 @@ namespace TexasLife.Commands
             //    return;
 
             //LoadDefaultWeather();
-        }
+        // }
 
         //public void LoadDefaultWeather()
         //{
         //    NAPI.World.SetWeather((Weather)LoadedSettings.default_weather);
         //}
 
-        [Command("register")]
-        public void CMD_Register(Client client, string username, string password)
-        {
+        // [Command("register")]
+        // public void CMD_Register(Client client, string username, string password)
+        // {
 
-            TLPlayer player = new TLPlayer(username, password, client.Name);
-            var isNewUser = db.GetList<TLPlayer>("username", username).Result;
+        //     TLPlayer player = new TLPlayer(username, password, client.Name);
+        //     var isNewUser = db.GetList<TLPlayer>("username", username).Result;
 
-            if (isNewUser.Count > 0)
-            {
-                client.SendChatMessage("~r~That username already exists");
-                return;
-            }
+        //     if (isNewUser.Count > 0)
+        //     {
+        //         client.SendChatMessage("~r~That username already exists");
+        //         return;
+        //     }
 
-            db.Insert<TLPlayer>(player);
-            client.SendChatMessage("You have been registered");
-        }
+        //     db.Insert<TLPlayer>(player);
+        //     client.SendChatMessage("You have been registered");
+        // }
 
         //[Command("login")]
         //public void CMD_Login(Client client, string username, string password)

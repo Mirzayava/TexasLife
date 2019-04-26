@@ -66,6 +66,14 @@ namespace TexasLife.Database
             return await collection.Find(filter).ToListAsync();
         }
 
+        public async Task<List<T>> GetList<T>()
+        // USEAGE:  var result = db.GetList<User>("Username", "Bob").Result;
+        {
+            var collection = Database.GetCollection<T>(typeof(T).Name);
+            var filter = Builders<T>.Filter.Empty;
+            return await collection.Find(filter).ToListAsync();
+        }
+
         public async Task<List<T>> GetListById<T>(ObjectId id)
         // USEAGE:  var result = db.GetListById<User>("Username", "Bob").Result;
         {

@@ -12,8 +12,6 @@ namespace TexasLife.Handler
     public static class TLLoginHandler
     {
 
-  
-
         public static void FinishLogin(Client client)
         {
             TLMongoDatabase db = new TLMongoDatabase();
@@ -31,8 +29,6 @@ namespace TexasLife.Handler
             {
                 playerStats = query[0];
             }
-
-            
 
             client.Position = playerStats.GetLastPosition();
 
